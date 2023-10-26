@@ -65,6 +65,10 @@ public class Book {
         return price;
     }
 
+    public double getPrice(double priceReduction) {
+        return price*priceReduction;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
