@@ -19,6 +19,13 @@ public class ComicBook extends Book{
         return super.getPrice()*0.6;
     }
 
+    @Override
+    public String toString() {
+        String ans =  super.toString();
+        ans += "\n\twith character " + characterName;
+        return ans;
+    }
+
     public String getCharacterName() {
         return characterName;
     }

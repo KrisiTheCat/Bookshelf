@@ -19,6 +19,13 @@ public class ChildrenBook extends Book{
         return super.getPrice()*0.7;
     }
 
+    @Override
+    public String toString() {
+        String ans =  super.toString();
+        ans += "\n\tappropriate " + age;
+        return ans;
+    }
+
     public int getAge() {
         return age;
     }
