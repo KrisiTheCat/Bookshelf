@@ -8,6 +8,7 @@ public class Book {
     private int yearPublishing;
     private double price;
     private int quantity = 0;
+    private BookType bookType;
 
     Book(){
         title = "";
@@ -17,6 +18,7 @@ public class Book {
         yearPublishing = 0;
         price = 0;
         quantity = 0;
+        bookType = BookType.BOOK;
     }
 
     Book(String title, int pages, Author author, int yearPublishing, double price) {
@@ -28,6 +30,7 @@ public class Book {
         this.yearPublishing = yearPublishing;
         this.price = price;
         this.quantity = 0;
+        bookType = BookType.BOOK;
     }
 
     public void buyTimes(int quantity){
@@ -100,6 +103,18 @@ public class Book {
 
     public int getYearPublishing() {
         return yearPublishing;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public BookType getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(BookType bookType) {
+        this.bookType = bookType;
     }
 
     public void setYearPublishing(int yearPublishing) {
