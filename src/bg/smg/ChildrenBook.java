@@ -8,8 +8,8 @@ public class ChildrenBook extends Book{
         super.setBookType(BookType.CHILDREN_BOOK);
     }
 
-    public ChildrenBook(String title, int pages, Author author, int yearPublishing, double price, int age) {
-        super(title, pages, author, yearPublishing, price);
+    public ChildrenBook(String title, int pages, Author author, int yearPublishing, double price, int age, int quantity) {
+        super(title, pages, author, yearPublishing, price, quantity);
         this.age = age;
         super.setBookType(BookType.CHILDREN_BOOK);
     }

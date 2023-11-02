@@ -8,7 +8,8 @@ public class Main {
     public static void main(String args[]){
 
         Bookstore bookstore = new Bookstore();
-        inputBooks(bookstore);
+        //inputBooks(bookstore);
+        hardCodedBooks(bookstore);
         System.out.println(bookstore.toString());
     }
 
@@ -28,27 +29,28 @@ public class Main {
         System.out.println("How many books should I add?");
         count = sc.nextInt();
         for(int i = 0; i < count; i++){
-            System.out.println("Please enter book: type title pages authorId yearOfPublishing price");
+            System.out.println("Please enter book: type title pages authorId yearOfPublishing price quantity");
             BookType type = BookType.valueOf(sc.next().toUpperCase());
             String title = sc.next();
             int pages = sc.nextInt();
             int authorId = sc.nextInt();
             int yearOfPublishing = sc.nextInt();
             double price = sc.nextDouble();
+            int quantity = sc.nextInt();
             Book b;
             switch(type){
                 case COMIC_BOOK:
                     System.out.println("Please enter characterName");
                     String characterName = sc.next();
-                    b = new ComicBook(title, pages, authors.get(authorId), yearOfPublishing, price, characterName);
+                    b = new ComicBook(title, pages, authors.get(authorId), yearOfPublishing, price, characterName, quantity);
                     break;
                 case CHILDREN_BOOK:
                     System.out.println("Please enter age");
                     int age = sc.nextInt();
-                    b = new ChildrenBook(title, pages, authors.get(authorId), yearOfPublishing, price, age);
+                    b = new ChildrenBook(title, pages, authors.get(authorId), yearOfPublishing, price, age, quantity);
                     break;
                 default:
-                    b = new Book(title, pages, authors.get(authorId), yearOfPublishing, price);
+                    b = new Book(title, pages, authors.get(authorId), yearOfPublishing, price, quantity);
                     break;
             }
             bookstore.addBook(b);
@@ -79,19 +81,24 @@ public class Main {
      */
     public static void hardCodedBooks(Bookstore bookstore){
         Author author = new Author("Rick", "Riordan", 40);
-        Book b = new Book("Percy Jackson and the lightning thief",100, author, 2005, 10);
+        Book b = new Book("Percy Jackson and the lightning thief",100, author, 2005, 10, 200);
         bookstore.addBook(b);
 
-        Book b2 = new Book("Percy Jackson and the sea of monsters",100, author, 2006, 12);
+        Book b2 = new Book("Percy Jackson and the sea of monsters",100, author, 2006, 12, 200);
         bookstore.addBook(b2);
 
         Author author2 = new Author("Hristina", "Vandeva", 17);
-        Book b3 = new ComicBook("Donaldus", 718, author, 2007, 16, "Donald Duck");
-        bookstore.addBook(b);
+        Book b3 = new ComicBook("Donaldus", 718, author2, 2007, 16, "Donald Duck", 200);
+        bookstore.addBook(b3);
+
+        Author author3 = new Author("Stefanie", "Popova", 17);
+        Book b4 = new ChildrenBook("Torbalan the children's lair", 1, author3, 2007, 16, 3, 200);
+        bookstore.addBook(b4);
 
         bookstore.buyBook("Percy Jackson and the lightning thief", 34);
         bookstore.buyBook("Percy Jackson and the sea of monsters", 34);
-        bookstore.buyBook("Percy Jackson and the lightning thief", 66);
+        bookstore.buyBook("Percy Jackson and the lightning thief", 67);
         bookstore.buyBook("Donaldus", 13);
+        bookstore.buyBook("Torbalan the children's lair", 101);
     }
 }

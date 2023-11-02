@@ -7,6 +7,7 @@ public class Book {
     private boolean isBestseller;
     private int yearPublishing;
     private double price;
+    private int startQuantity = 0;
     private int quantity = 0;
     private BookType bookType;
 
@@ -21,7 +22,7 @@ public class Book {
         bookType = BookType.BOOK;
     }
 
-    Book(String title, int pages, Author author, int yearPublishing, double price) {
+    Book(String title, int pages, Author author, int yearPublishing, double price, int quantity) {
         this.title = title;
         this.pages = pages;
         this.author = author;
@@ -29,15 +30,21 @@ public class Book {
         this.isBestseller = false;
         this.yearPublishing = yearPublishing;
         this.price = price;
-        this.quantity = 0;
+        this.quantity = quantity;
+        this.startQuantity = quantity;
         bookType = BookType.BOOK;
     }
 
-    public void buyTimes(int quantity){
-        this.quantity += quantity;
-        if(this.quantity >= 100){
+    public double buyTimes(int quantity){
+        if(this.quantity < quantity){
+            System.out.println("Unavailable!");
+            return 0;
+        }
+        this.quantity -= quantity;
+        if(this.startQuantity - this.quantity >= 100){
             makeBestseller();
         }
+        return quantity*price;
     }
 
     @Override
@@ -48,7 +55,7 @@ public class Book {
         ans += "\n\t" + pages + " pages";
         ans += "\n\tpublshed " + yearPublishing;
         ans += "\n\tcosts $" + price;
-        ans += "\n\tbought " + quantity + " times";
+        ans += "\n\tleft: " + quantity + "/" + this.startQuantity;
         return ans;
     }
 

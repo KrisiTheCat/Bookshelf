@@ -8,8 +8,8 @@ public class ComicBook extends Book{
         super.setBookType(BookType.COMIC_BOOK);
     }
 
-    public ComicBook(String title, int pages, Author author, int yearPublishing, double price, String characterName) {
-        super(title, pages, author, yearPublishing, price);
+    public ComicBook(String title, int pages, Author author, int yearPublishing, double price, String characterName, int quantity) {
+        super(title, pages, author, yearPublishing, price, quantity);
         this.characterName = characterName;
         super.setBookType(BookType.COMIC_BOOK);
     }

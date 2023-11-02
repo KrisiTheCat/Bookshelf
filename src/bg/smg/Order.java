@@ -10,8 +10,7 @@ public class Order {
     }
 
     double execute(){
-        book.buyTimes(quantity);
-        return book.getPrice()*quantity;
+        return book.buyTimes(quantity);
     }
 
     public Book getBook() {
